@@ -11,10 +11,11 @@ import colors from '../styles/colors'
 
 const NavT = styled.nav`
     position: absolute;
+    top: 0;
     background-color:  ${colors.backgroundNav};
     width: 100%;
-    z-index: 2;
     height: 9.1rem;
+    z-index: 2;
     padding: 0 2.8rem;
     display: flex;
     justify-content: space-between;

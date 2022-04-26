@@ -15,12 +15,13 @@ import YogaIcon from "../assets/YogaIcon.svg"
 const NavL = styled.nav`
     position: absolute;
     background-color:  ${colors.backgroundNav};
-    height: 100%;
     width: 11.7rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    top: 0;
     row-gap: 2rem;
 `
 
@@ -34,11 +35,13 @@ const NavIcon = styled(Link)`
 `
 
 const NavText = styled.p`
-    position: absolute;s
+    position: absolute;
     white-space: nowrap;
     color: ${colors.white};
     font-size: 1.2rem;
-    transform: rotate(-90deg);
+    bottom: 5.9rem;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
 `
 
 class NavLeft extends React.Component {
