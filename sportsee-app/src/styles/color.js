@@ -11,6 +11,7 @@ const colors = {
     iconPink: "#FD5181",
     iconRed: "#FF0000",
     iconYellow: "#FDCC0C",
+    graphGrey: "#9B9EAC",
     graphLine: "#DEDEDE",
     graphRed: "#E60000",
     graphTitle: "#20253A",
