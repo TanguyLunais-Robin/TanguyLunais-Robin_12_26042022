@@ -5,13 +5,17 @@ import styled from "styled-components";
 //Components
 import BiaxialBarComponent from "./BiaxialBarComponent";
 import RadarComponent from "./RadarComponent";
-import SimpleAreaComponent from "./SimpleAreaComponent";
+import LineComponent from "./LineComponent";
 import PieComponent from "./PieComponent"
-import KeyData from "./KeyData"
+import KeyData from "./KeyData";
 
 const Body = styled.div`
     display: flex;
     column-gap: 3.1rem;
+
+    @media screen and (max-width: 1300px) {
+        flex-direction: column;
+    }
 `
 
 const ContainerBottom = styled.div`
@@ -23,6 +27,10 @@ const ContainerBottom = styled.div`
 const ContainerLeft = styled.div`
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 1390px) {
+        width: 83.5rem;
+    }
 `
 
 class Dashboard extends React.Component {
@@ -37,7 +45,7 @@ class Dashboard extends React.Component {
                         activity = {activity}
                     />
                     <ContainerBottom>
-                        <SimpleAreaComponent
+                        <LineComponent
                             average = {average}
                         />
                         <RadarComponent
