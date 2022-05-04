@@ -1,9 +1,9 @@
 //React
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 //Utils
-import colors from '../styles/colors'
+import colors from "../styles/colors";
 
 const Title = styled.header`
     h1 {
@@ -13,6 +13,7 @@ const Title = styled.header`
     p {
         font-size: 1.8rem;
         margin-top: 4.1rem;
+        margin-bottom: 10.1rem;
     }
 `
 
