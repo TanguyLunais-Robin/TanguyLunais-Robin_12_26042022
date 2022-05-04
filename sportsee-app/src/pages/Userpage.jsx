@@ -10,8 +10,14 @@ import Dashboard from "../components/Dashboard"
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from "../datas/data"
 
 const Body = styled.div`
-  margin-top: 15.9rem;
+  padding-top: 15.9rem;
   margin-left: 22.4rem;
+
+  @media screen and (max-width: 1390px) {
+    padding-top: 11.9rem;
+    margin-left: 15.4rem;
+  }
+}
 `
 
 class UserPage extends React.Component {
