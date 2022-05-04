@@ -14,12 +14,15 @@ const ContainerRadar = styled.div`
   border-radius: .5rem;
   height: 26.3rem;
   width: 25.8rem;
+  tspan {
+    font-size: 1.2rem;
+  }
 `
 
 class RadarComponent extends React.Component {
   render() {
 
-    const {data} = this.props
+    const {data} = this.props.performance
 
     return (
       <ContainerRadar>
