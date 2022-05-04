@@ -6,3 +6,8 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
+body {
+  height: 100%;
+  position: relative;
+}
