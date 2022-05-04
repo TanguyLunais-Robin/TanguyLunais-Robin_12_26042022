@@ -1,5 +1,8 @@
 const colors = {
     backgroundBlue: "rgba(74, 184, 255, 0.1)",
+    backgroundGraphGrey: "rgba(196, 196, 196, 0.5)",
+    backgroundGraphRed: "rgba(255, 1, 1, 0.7)",
+    backgroundGraphWhite: "linear-gradient(180deg, #FFFFFF -1.76%, rgba(255, 255, 255, 0.106534) 100%)",
     backgroundLightGrey: "#FBFBFB",
     backgroundLigthRed: "rgba(255, 1, 1, 0.1)",
     backgroundNav: "#020203",
