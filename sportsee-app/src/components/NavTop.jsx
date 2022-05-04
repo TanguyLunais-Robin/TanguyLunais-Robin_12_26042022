@@ -12,8 +12,8 @@ import colors from "../styles/colors";
 const NavT = styled.nav`
     position: absolute;
     top: 0;
-    background-color:  ${colors.backgroundNav};
-    width: 100%;
+    background-color: ${colors.backgroundNav};
+    min-width: 100%;
     height: 9.1rem;
     z-index: 2;
     padding: 0 2.8rem;
@@ -23,7 +23,7 @@ const NavT = styled.nav`
 `
 
 const NavLink = styled(Link)`
-    color:  ${colors.white};
+    color: ${colors.white};
     font-size: 2.4rem;
 `
 

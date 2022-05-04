@@ -13,13 +13,13 @@ import SwimmingIcon from "../assets/SwimmingIcon.svg";
 import YogaIcon from "../assets/YogaIcon.svg";
 
 const NavL = styled.nav`
-    position: fixed;
-    background-color:  ${colors.backgroundNav};
+    background-color: ${colors.backgroundNav};
+    position: absolute;
     width: 11.7rem;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 34.7rem; 
     align-items: center;
     top: 0;
     row-gap: 2rem;
@@ -29,7 +29,7 @@ const NavIcon = styled(Link)`
     height: 6.4rem;
     width: 6.4rem;
     border-radius: .6rem;
-    background-color:  ${colors.white};
+    background-color: ${colors.white};
     display: flex;
     justify-content: center;
 `
@@ -48,10 +48,10 @@ class NavLeft extends React.Component {
     render() {  
         return (
             <NavL>
-                <NavIcon to = "/"><img src = {YogaIcon} alt = "Icône yoga"/></NavIcon>
-                <NavIcon to = "/"><img src = {SwimmingIcon} alt = "Icône natation"/></NavIcon>
-                <NavIcon to = "/"><img src = {BikeIcon} alt = "Icône vélo"/></NavIcon>
-                <NavIcon to = "/"><img src = {DumbbellIcon} alt = "Icône haltère"/></NavIcon>
+                <NavIcon to = "/"><img width = {36} src = {YogaIcon} alt = "Icône yoga"/></NavIcon>
+                <NavIcon to = "/"><img width = {32} src = {SwimmingIcon} alt = "Icône natation"/></NavIcon>
+                <NavIcon to = "/"><img width = {37} src = {BikeIcon} alt = "Icône vélo"/></NavIcon>
+                <NavIcon to = "/"><img width = {32} src = {DumbbellIcon} alt = "Icône haltère"/></NavIcon>
                 <NavText>Copyright, SportSee 2020</NavText>
             </NavL>
         )
