@@ -6,33 +6,52 @@ import styled from "styled-components";
 import BiaxialBarComponent from "./BiaxialBarComponent";
 import RadarComponent from "./RadarComponent";
 import SimpleAreaComponent from "./SimpleAreaComponent";
+import PieComponent from "./PieComponent"
+import KeyData from "./KeyData"
+
+const Body = styled.div`
+    display: flex;
+    column-gap: 3.1rem;
+`
 
 const ContainerBottom = styled.div`
-  display: flex;
-  column-gap: 3rem;
-  margin: 3rem 0;
+    display: flex;
+    column-gap: 3rem;
+    margin: 3rem 0;
+`
+
+const ContainerLeft = styled.div`
+    display: flex;
+    flex-direction: column;
 `
 
 class Dashboard extends React.Component {
     render() { 
 
-        const {session, average, kind, data} = this.props
+        const {activity, average, performance, user} = this.props
 
-        return (
-            <React.Fragment>
-                <BiaxialBarComponent
-                    session = {session}
+        return ( 
+            <Body>
+                <ContainerLeft>
+                    <BiaxialBarComponent
+                        activity = {activity}
+                    />
+                    <ContainerBottom>
+                        <SimpleAreaComponent
+                            average = {average}
+                        />
+                        <RadarComponent
+                            performance = {performance}
+                        />
+                        <PieComponent
+                            user = {user}
+                        />
+                    </ContainerBottom>
+                </ContainerLeft>
+                <KeyData
+                    user = {user}
                 />
-                <ContainerBottom>
-                    <SimpleAreaComponent
-                        average = {average}
-                    />
-                    <RadarComponent
-                        kind = {kind}
-                        data = {data}
-                    />
-                </ContainerBottom>
-            </React.Fragment>
+            </Body>
         )
     }
 }

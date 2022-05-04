@@ -22,10 +22,10 @@ class UserPage extends React.Component {
           name = {USER_MAIN_DATA[0].userInfos.firstName}
         />
         <Dashboard
-          session = {USER_ACTIVITY[0].sessions}
+          activity = {USER_ACTIVITY[0]}
           average = {USER_AVERAGE_SESSIONS[0].sessions}
-          kind = {USER_PERFORMANCE[0].kind}
-          data = {USER_PERFORMANCE[0].data}
+          performance = {USER_PERFORMANCE[0]}
+          user = {USER_MAIN_DATA[0]}
         />
       </Body>
     );
