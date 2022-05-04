@@ -1,49 +1,63 @@
 //React
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 //Utils
-import colors from "../styles/colors"
+import colors from "../styles/colors";
 
 //Assets
-import Apple from "../assets/AppleIcon.svg"
-import Cheeseburger from "../assets/CheeseburgerIcon.svg"
-import Chicken from "../assets/ChickenIcon.svg"
-import Flame from "../assets/FlameIcon.svg"
+import Apple from "../assets/AppleIcon.svg";
+import Cheeseburger from "../assets/CheeseburgerIcon.svg";
+import Chicken from "../assets/ChickenIcon.svg";
+import Flame from "../assets/FlameIcon.svg";
 
 const ContainerRight = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 3.9rem;
+
     span {
         font-weight: 700;
         font-size: 2rem;
         color: ${colors.darkGrey};
     }
+
     p {
         font-size: 1.4rem;
         color: ${colors.fontLightGrey};
+    }
+
+    @media screen and (max-width: 1300px) {
+        flex-direction: row;
+        column-gap: 3.9rem;
+        flex-wrap: wrap;
+        width: 83.5rem;
     }
 `
 
 const ContainerKeyData = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
     column-gap: 2.4rem;
     background-color: ${colors.backgroundLightGrey};
     width: 25.8rem;
     height: 12.4rem;
     border-radius: .5rem;
+
+    @media screen and (max-width: 1300px) {
+        min-width: 40%;
+        flex: 1;
+    }
 `
 const BackgroundIcon = styled.div`
+    margin-left: 3.2rem;
     background-color: ${(props) => props.color};
-    opacity: 0.07;
     height: 6rem;
     width: 6rem;
-    img {
-        z-index: 2;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .6rem;
 `
 
 class KeyData extends React.Component {
@@ -54,7 +68,7 @@ class KeyData extends React.Component {
     return (
         <ContainerRight>
             <ContainerKeyData>
-                <BackgroundIcon color = {colors.iconRed}>
+                <BackgroundIcon color = {colors.backgroundLigthRed}>
                     <img src = {Flame} alt = "Icône de flamme"/>
                 </BackgroundIcon>
                 <div>
@@ -64,7 +78,9 @@ class KeyData extends React.Component {
             </ContainerKeyData>
 
             <ContainerKeyData>
-                <img src = {Chicken} alt = "Icône de cuisse de poulet"/>
+                <BackgroundIcon color = {colors.backgroundBlue}>
+                    <img src = {Chicken} alt = "Icône de cuisse de poulet"/>
+                </BackgroundIcon>
                 <div>
                     <span>{`${user.keyData.proteinCount}g`}</span>
                     <p>Proteines</p>
@@ -72,15 +88,18 @@ class KeyData extends React.Component {
             </ContainerKeyData>
 
             <ContainerKeyData>
-                <img src = {Apple} alt = "Icône de pomme"/>
+                <BackgroundIcon color = {colors.backgroundYellow}>
+                    <img src = {Apple} alt = "Icône de pomme"/>
+                </BackgroundIcon> 
                 <div>
                     <span>{`${user.keyData.carbohydrateCount}g`}</span>
                     <p>Glucides</p>
                 </div>
             </ContainerKeyData>
-
             <ContainerKeyData>
-                <img src = {Cheeseburger} alt = "Icône de cheeseburger"/>
+                <BackgroundIcon color = {colors.backgroundPink}>
+                    <img src = {Cheeseburger} alt = "Icône de cheeseburger"/>
+                </BackgroundIcon>
                 <div>
                     <span>{`${user.keyData.lipidCount}g`}</span>
                     <p>Lipides</p>
