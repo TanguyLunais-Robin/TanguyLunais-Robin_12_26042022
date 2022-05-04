@@ -1,10 +1,10 @@
 //React
-import React from "react"
-import {Radar, RadarChart, PolarGrid, PolarAngleAxis} from "recharts"
-import styled from "styled-components"
+import React from "react";
+import {Radar, RadarChart, PolarGrid, PolarAngleAxis} from "recharts";
+import styled from "styled-components";
 
 //Utils
-import colors from '../styles/colors'
+import colors from "../styles/colors";
 
 const ContainerRadar = styled.div`
   display: flex;
@@ -14,27 +14,38 @@ const ContainerRadar = styled.div`
   border-radius: .5rem;
   height: 26.3rem;
   width: 25.8rem;
+
   tspan {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `
 
 class RadarComponent extends React.Component {
   render() {
 
-    const {data} = this.props.performance
+    const {performance} = this.props
 
     return (
       <ContainerRadar>
         <RadarChart
-          outerRadius = {90}
-          width = {250}
-          height = {250}
-          data = {data}
+          outerRadius = {83}
+          width = {258}
+          height = {258}
+          data = {performance.data}
+          margin = {{
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 0,
+          }}
         >
           <PolarGrid/>
           <PolarAngleAxis
+            tickLine = {false}
+            stroke = {colors.white}
             dataKey = "kind"
+            axisLine = {false}
+            tickFormatter = {(value, index) => performance.kind[value][0].toUpperCase() + performance.kind[value].slice(1)}
           />
           <Radar
             dataKey = "value"
