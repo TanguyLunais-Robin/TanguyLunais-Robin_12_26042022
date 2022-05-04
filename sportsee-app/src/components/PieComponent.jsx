@@ -1,10 +1,10 @@
 //React
 import React from "react";
 import {PieChart, Pie, Cell} from "recharts";
-import styled from "styled-components"
+import styled from "styled-components";
 
 //Utils
-import colors from "../styles/colors"
+import colors from "../styles/colors";
 
 const ContainerPie = styled.div`
   display: flex;
@@ -65,7 +65,11 @@ class PieComponent extends React.Component {
             dataKey = "value"
           >
             {score.map((entry, index) => (
-              <Cell key={`cell-${index}`} stroke = "transparent" fill={graphColors[index % graphColors.length]}/>
+              <Cell
+                key={`cell-${index}`}
+                stroke = "transparent"
+                fill={graphColors[index % graphColors.length]}
+              />
             ))}
           </Pie>
         </PieChart>
