@@ -1,10 +1,10 @@
 //React
-import React from "react";
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts";
-import styled from "styled-components";
+import React from "react"
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts"
+import styled from "styled-components"
 
 //Utilss
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 const ContainerTooltip = styled.div`
     background-color: ${colors.graphRed};
@@ -90,7 +90,7 @@ const CustomTooltip = ({active, payload}) => {
 		);
 	}
 
-	return null;
+	return null
 };
 
 /**
@@ -106,7 +106,7 @@ const formatXAxis = (tickItem) => {
         tickItem = tickItem.slice(1)
     }
 
-    return tickItem;
+    return tickItem
   }
 
 /**
@@ -191,7 +191,7 @@ class BiaxialBarComponent extends React.Component {
                 />
             </BarChart>
         </ContainerBar>
-    );
+    )
   }
 }
 

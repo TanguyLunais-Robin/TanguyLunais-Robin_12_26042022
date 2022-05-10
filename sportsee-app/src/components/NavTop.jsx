@@ -1,13 +1,13 @@
 //React
-import React from "react";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
+import React from "react"
+import styled from "styled-components"
+import {Link} from "react-router-dom"
 
 //Assets
-import logo from "../assets/Logo.svg";
+import logo from "../assets/Logo.svg"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 const NavT = styled.nav`
     position: absolute;

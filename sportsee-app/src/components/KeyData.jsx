@@ -1,15 +1,15 @@
 //React
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 //Assets
-import Apple from "../assets/AppleIcon.svg";
-import Cheeseburger from "../assets/CheeseburgerIcon.svg";
-import Chicken from "../assets/ChickenIcon.svg";
-import Flame from "../assets/FlameIcon.svg";
+import Apple from "../assets/AppleIcon.svg"
+import Cheeseburger from "../assets/CheeseburgerIcon.svg"
+import Chicken from "../assets/ChickenIcon.svg"
+import Flame from "../assets/FlameIcon.svg"
 
 const ContainerRight = styled.div`
     display: flex;
@@ -67,7 +67,7 @@ const BackgroundIcon = styled.div`
 * @param {string} props.keyData.proteinCount - protein counter
 * @param {string} props.keyData.carbohydrateCount - carbohydrate counter
 * @param {string} props.keyData.lipidCount - lipid counter
-* @returns {Component} - Div key data
+* @returns {Component} - Div with key data
 */
 
 class KeyData extends React.Component {

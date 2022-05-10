@@ -1,9 +1,9 @@
 //React
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 const Title = styled.header`
     h1 {

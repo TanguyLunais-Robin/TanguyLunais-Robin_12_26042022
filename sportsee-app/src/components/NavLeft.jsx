@@ -1,16 +1,16 @@
 //React
-import React from "react";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
+import React from "react"
+import styled from "styled-components"
+import {Link} from "react-router-dom"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 //Assets
-import BikeIcon from "../assets/BikeIcon.svg";
-import DumbbellIcon from "../assets/DumbbellIcon.svg";
-import SwimmingIcon from "../assets/SwimmingIcon.svg";
-import YogaIcon from "../assets/YogaIcon.svg";
+import BikeIcon from "../assets/BikeIcon.svg"
+import DumbbellIcon from "../assets/DumbbellIcon.svg"
+import SwimmingIcon from "../assets/SwimmingIcon.svg"
+import YogaIcon from "../assets/YogaIcon.svg"
 
 const NavL = styled.nav`
     background-color: ${colors.backgroundNav};

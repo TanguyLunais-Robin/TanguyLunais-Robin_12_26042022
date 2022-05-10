@@ -1,10 +1,10 @@
 //React
-import React from "react";
-import {Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
-import styled from "styled-components";
+import React from "react"
+import {Line, LineChart, Tooltip, XAxis, YAxis} from "recharts"
+import styled from "styled-components"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 const ContainerLine = styled.div`
   display: flex;
@@ -58,8 +58,8 @@ const CustomTooltip = ({active, payload}) => {
 		);
 	}
 
-	return null;
-};
+	return null
+}
 
 /**
 * @param {Object} props - Props
@@ -103,7 +103,7 @@ class LineComponent extends React.Component {
       default:
         value = ""
     }
-    return value;
+    return value
   }
 
   render() {
@@ -150,7 +150,7 @@ class LineComponent extends React.Component {
           />
         </LineChart>
       </ContainerLine>
-    );
+    )
   }
 }
 

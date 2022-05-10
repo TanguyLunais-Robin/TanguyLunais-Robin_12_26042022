@@ -1,10 +1,10 @@
 //React
-import React from "react";
-import {PieChart, Pie, Cell} from "recharts";
-import styled from "styled-components";
+import React from "react"
+import {PieChart, Pie, Cell} from "recharts"
+import styled from "styled-components"
 
 //Utils
-import colors from "../styles/colors";
+import colors from "../styles/colors"
 
 const ContainerPie = styled.div`
   display: flex;
@@ -55,8 +55,8 @@ class PieComponent extends React.Component {
 
     const {user} = this.props
 
-    const score = [{ value: user.todayScore }, { value: 1 - user.todayScore }];
-    const graphColors = [colors.graphRed, "transparent"];
+    const score = [{ value: user.todayScore }, { value: 1 - user.todayScore }]
+    const graphColors = [colors.graphRed, "transparent"]
 
     return (
       <ContainerPie>

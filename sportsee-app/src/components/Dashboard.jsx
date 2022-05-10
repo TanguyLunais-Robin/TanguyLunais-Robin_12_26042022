@@ -1,13 +1,13 @@
 //React
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 //Components
-import BiaxialBarComponent from "./BiaxialBarComponent";
-import RadarComponent from "./RadarComponent";
-import LineComponent from "./LineComponent";
+import BiaxialBarComponent from "./BiaxialBarComponent"
+import RadarComponent from "./RadarComponent"
+import LineComponent from "./LineComponent"
 import PieComponent from "./PieComponent"
-import KeyData from "./KeyData";
+import KeyData from "./KeyData"
 
 const Body = styled.div`
     display: flex;
