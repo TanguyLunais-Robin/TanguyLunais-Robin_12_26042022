@@ -10,6 +10,7 @@ const Title = styled.header`
         font-size: 4.8rem;
         font-weight: 500;
     }
+
     p {
         font-size: 1.8rem;
         margin-top: 4.1rem;
@@ -21,6 +22,12 @@ const Name = styled.span`
     font-size: 4.8rem;
     color: ${colors.fontRed};
 `
+
+/**
+* @param {Object} props - Props
+* @param {string} props - Firstname of the user (name)
+* @returns {Component} - Header with name of the user and tagline 
+*/
 
 class Header extends React.Component {
     render() { 

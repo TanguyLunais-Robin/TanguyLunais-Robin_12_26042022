@@ -27,6 +27,10 @@ const NavLink = styled(Link)`
     font-size: 2.4rem;
 `
 
+/**
+* @returns {Component} - Nav top with logo and navigation links
+*/
+
 class NavTop extends React.Component {
     render() {  
         return (

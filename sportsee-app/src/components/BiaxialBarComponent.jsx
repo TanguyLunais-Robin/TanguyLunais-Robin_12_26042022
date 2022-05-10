@@ -73,6 +73,13 @@ const Color = styled.div`
     border-radius: 10rem;
 `
 
+/**
+* Custom tooltip of BarChart
+* @param {array} payload - Containing the information of Barchart
+* @param {boolean} active - Tooltip status
+* @returns {Component} - Div with the information to display (kilogram, calories)
+*/
+
 const CustomTooltip = ({active, payload}) => {
 	if (active) {
 		return (
@@ -86,8 +93,13 @@ const CustomTooltip = ({active, payload}) => {
 	return null;
 };
 
+/**
+* Custom X axis of BarChart
+* @param {string} tickItem - Unformatted X axis data (YYYY-MM-DD)
+* @returns {string} - Data formatted in the correct format (DD)
+*/
+
 const formatXAxis = (tickItem) => {
-    tickItem = tickItem.toString()
     tickItem = tickItem.slice(8)
 
     if (tickItem[0] === "0") {
@@ -96,6 +108,15 @@ const formatXAxis = (tickItem) => {
 
     return tickItem;
   }
+
+/**
+* @param {Object} props - Props
+* @param {Array} props.activity - Data to display in the graph (sessions)
+* @param {string} props.activity[].day - Date of the data
+* @param {number} props.activity[].kilogram - Kilogram for the date
+* @param {number} props.activity[].calories - Calories spent for the day
+* @returns {Component} - Div with the Biaxal Bar Chart
+*/
 
 class BiaxialBarComponent extends React.Component {
   render() {

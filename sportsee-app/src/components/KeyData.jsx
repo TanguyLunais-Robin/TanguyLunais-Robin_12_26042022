@@ -60,6 +60,16 @@ const BackgroundIcon = styled.div`
     border-radius: .6rem;
 `
 
+/**
+* @param {Object} props - Props
+* @param {Array} props - Data to display (user)
+* @param {string} props.keyData.calorieCount - calorie couter
+* @param {string} props.keyData.proteinCount - protein counter
+* @param {string} props.keyData.carbohydrateCount - carbohydrate counter
+* @param {string} props.keyData.lipidCount - lipid counter
+* @returns {Component} - Div key data
+*/
+
 class KeyData extends React.Component {
   render () {
 

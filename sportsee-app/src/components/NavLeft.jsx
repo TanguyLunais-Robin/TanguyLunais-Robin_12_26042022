@@ -43,6 +43,9 @@ const NavText = styled.p`
     writing-mode: vertical-lr;
     transform: rotate(180deg);
 `
+/**
+* @returns {Component} - Nav Left with navigation icon links and Copyright
+*/
 
 class NavLeft extends React.Component {
     render() {  

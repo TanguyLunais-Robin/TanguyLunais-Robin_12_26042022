@@ -42,6 +42,13 @@ const ContainerTooltip = styled.div`
     }
 `
 
+/**
+* Custom tooltip of BarChart
+* @param {array} payload - Containing the information of Barchart
+* @param {boolean} active - Tooltip status
+* @returns {Component} - Div with the information to display (sessionLenght)
+*/
+
 const CustomTooltip = ({active, payload}) => {
 	if (active) {
 		return (
@@ -54,10 +61,22 @@ const CustomTooltip = ({active, payload}) => {
 	return null;
 };
 
+/**
+* @param {Object} props - Props
+* @param {Array} props - Data to display in the graph (average)
+* @param {string} props[].day - Date of the data
+* @param {number} props[].sessionLength - Duration of the session for the date
+* @returns {Component} - Div with the Line Chart
+*/
+
 class LineComponent extends React.Component {
 
+  /**
+  * @param {Object} props - Corresponds to unformatted X axis data (number)
+  * @returns {string} - Data formatted in the correct format: letter corresponding to the day number
+  */
+
   getXAxis(data) {
-    console.log(data.day)
     let value = ""
     switch (data.day) {
       case 1:

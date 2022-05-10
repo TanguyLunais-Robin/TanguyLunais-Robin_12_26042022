@@ -43,6 +43,13 @@ const PieInfo = styled.div`
   }
 `
 
+/**
+* @param {Object} props - Props
+* @param {Array} props - Data to display in the graph (user)
+* @param {number} props.todayScore - Daily activity score
+* @returns {Component} - Div with the Pie Chart
+*/
+
 class PieComponent extends React.Component {
   render () {
 

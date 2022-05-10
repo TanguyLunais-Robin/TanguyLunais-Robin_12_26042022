@@ -33,6 +33,15 @@ const ContainerLeft = styled.div`
     }
 `
 
+/**
+* @param {Object} props - Props
+* @param {Array} props - Data to display in the biaxial bar graph (activity)
+* @param {Array} props - Data to display in the line graph (average)
+* @param {Array} props - Data to display in the radar graph (performance)
+* @param {Array} props - Data to display in the pie graph (user)
+* @returns {Component} - Div with graphs and key data
+*/
+
 class Dashboard extends React.Component {
     render() { 
 

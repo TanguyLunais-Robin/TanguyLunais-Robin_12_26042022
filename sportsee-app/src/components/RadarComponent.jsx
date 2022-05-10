@@ -20,6 +20,16 @@ const ContainerRadar = styled.div`
   }
 `
 
+/**
+* @param {Object} props - Props
+* @param {Array} props - Data to display in the graph (performance)
+* @param {Object} props[].kind - Corresponds to formatted X axis data (word matches kind digit)
+* @param {Array} props[].data - Data to display in the graph (value, kind)
+* @param {Number} props[].data[].value - Value of the performance of the day
+* @param {Number} props[].data[].kind - Corresponds to unformatted X axis data (kind digit)
+* @returns {Component} - Div with the Radar Chart
+*/
+
 class RadarComponent extends React.Component {
   render() {
 

@@ -17,8 +17,11 @@ const Body = styled.div`
     padding-top: 11.9rem;
     margin-left: 15.4rem;
   }
-}
 `
+
+/** 
+* @returns {Component} - Div with header and dashboard
+*/
 
 class UserPage extends React.Component {
   render () {
