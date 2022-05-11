@@ -6,6 +6,11 @@ import styled from "styled-components"
 //Utils
 import colors from "../styles/colors"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const ContainerRadar = styled.div`
   display: flex;
   justify-content: center;
@@ -22,26 +27,58 @@ const ContainerRadar = styled.div`
 
 /**
 * @param {Object} props - Props
-* @param {Array} props - Data to display in the graph (performance)
-* @param {Object} props[].kind - Corresponds to formatted X axis data (word matches kind digit)
-* @param {Array} props[].data - Data to display in the graph (value, kind)
-* @param {Number} props[].data[].value - Value of the performance of the day
-* @param {Number} props[].data[].kind - Corresponds to unformatted X axis data (kind digit)
+* @param {string} id - User ID number
 * @returns {Component} - Div with the Radar Chart
 */
 
 class RadarComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      datas: [
+        {value: 0, kind: 1},
+        {value: 0, kind: 2},
+        {value: 0, kind: 3},
+        {value: 0, kind: 4},
+        {value: 0, kind: 5},
+        {value: 0, kind: 6}
+      ],
+      kind: {
+        1: "cardio",
+        2: "energy",
+        3: "endurance",
+        4: "strength",
+        5: "speed",
+        6: "intensity"
+      }
+    }
+    this.service = new Service()
+  }
+
+  componentDidMount() {
+    this.service.getPerformance(this.props.id, this.recoveryPerformance)
+  }
+
+  /**
+  * Update the state with the fetched data
+  * @param {object} data the fetched data from API
+  */
+
+  recoveryPerformance = (data) => {
+    this.setState({
+      datas: data.datas,
+      kind: data.kind
+    })
+  }
+
   render() {
-
-    const {performance} = this.props
-
     return (
       <ContainerRadar>
         <RadarChart
           outerRadius = {83}
           width = {258}
           height = {258}
-          data = {performance.data}
+          data = {this.state.datas}
           margin = {{
             top: 0,
             right: 0,
@@ -55,7 +92,7 @@ class RadarComponent extends React.Component {
             stroke = {colors.white}
             dataKey = "kind"
             axisLine = {false}
-            tickFormatter = {(value, index) => performance.kind[value][0].toUpperCase() + performance.kind[value].slice(1)}
+            tickFormatter = {(value, index) => this.state.kind[value][0].toUpperCase() + this.state.kind[value].slice(1)}
           />
           <Radar
             dataKey = "value"

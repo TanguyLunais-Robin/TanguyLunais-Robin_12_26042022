@@ -11,6 +11,11 @@ import Cheeseburger from "../assets/CheeseburgerIcon.svg"
 import Chicken from "../assets/ChickenIcon.svg"
 import Flame from "../assets/FlameIcon.svg"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const ContainerRight = styled.div`
     display: flex;
     flex-direction: column;
@@ -62,62 +67,84 @@ const BackgroundIcon = styled.div`
 
 /**
 * @param {Object} props - Props
-* @param {Array} props - Data to display (user)
-* @param {string} props.keyData.calorieCount - calorie couter
-* @param {string} props.keyData.proteinCount - protein counter
-* @param {string} props.keyData.carbohydrateCount - carbohydrate counter
-* @param {string} props.keyData.lipidCount - lipid counter
+* @param {string} id - User ID number
 * @returns {Component} - Div with key data
 */
 
 class KeyData extends React.Component {
-  render () {
+    constructor(props) {
+        super(props)
+        this.state = {
+            calorieCount: NaN,
+            proteinCount: NaN,
+            carbohydrateCount: NaN,
+            lipidCount: NaN
+        }
+        this.service = new Service()
+    }
 
-    const {user} = this.props
+    componentDidMount() {
+        this.service.getUser(this.props.id, this.recoveryUser)
+    }
+    
+    /**
+    * Update the state with the fetched data
+    * @param {object} data the fetched data from API
+    */
 
-    return (
-        <ContainerRight>
-            <ContainerKeyData>
-                <BackgroundIcon color = {colors.backgroundLigthRed}>
-                    <img src = {Flame} alt = "Icône de flamme"/>
-                </BackgroundIcon>
-                <div>
-                    <span>{`${user.keyData.calorieCount}kCal`}</span>
-                    <p>Calories</p>
-                </div>
-            </ContainerKeyData>
+    recoveryUser = (data) => {
+        this.setState({
+            calorieCount: data.calorieCount,
+            proteinCount: data.proteinCount,
+            carbohydrateCount: data.carbohydrateCount,
+            lipidCount: data.lipidCount
+        })
+    }
 
-            <ContainerKeyData>
-                <BackgroundIcon color = {colors.backgroundBlue}>
-                    <img src = {Chicken} alt = "Icône de cuisse de poulet"/>
-                </BackgroundIcon>
-                <div>
-                    <span>{`${user.keyData.proteinCount}g`}</span>
-                    <p>Proteines</p>
-                </div>
-            </ContainerKeyData>
+    render () {
+        return (
+            <ContainerRight>
+                <ContainerKeyData>
+                    <BackgroundIcon color = {colors.backgroundLigthRed}>
+                        <img src = {Flame} alt = "Icône de flamme"/>
+                    </BackgroundIcon>
+                    <div>
+                        <span>{`${this.state.calorieCount}kCal`}</span>
+                        <p>Calories</p>
+                    </div>
+                </ContainerKeyData>
 
-            <ContainerKeyData>
-                <BackgroundIcon color = {colors.backgroundYellow}>
-                    <img src = {Apple} alt = "Icône de pomme"/>
-                </BackgroundIcon> 
-                <div>
-                    <span>{`${user.keyData.carbohydrateCount}g`}</span>
-                    <p>Glucides</p>
-                </div>
-            </ContainerKeyData>
-            <ContainerKeyData>
-                <BackgroundIcon color = {colors.backgroundPink}>
-                    <img src = {Cheeseburger} alt = "Icône de cheeseburger"/>
-                </BackgroundIcon>
-                <div>
-                    <span>{`${user.keyData.lipidCount}g`}</span>
-                    <p>Lipides</p>
-                </div>
-            </ContainerKeyData>
-        </ContainerRight>
-    )
-  }
+                <ContainerKeyData>
+                    <BackgroundIcon color = {colors.backgroundBlue}>
+                        <img src = {Chicken} alt = "Icône de cuisse de poulet"/>
+                    </BackgroundIcon>
+                    <div>
+                        <span>{`${this.state.proteinCount}g`}</span>
+                        <p>Proteines</p>
+                    </div>
+                </ContainerKeyData>
+
+                <ContainerKeyData>
+                    <BackgroundIcon color = {colors.backgroundYellow}>
+                        <img src = {Apple} alt = "Icône de pomme"/>
+                    </BackgroundIcon> 
+                    <div>
+                        <span>{`${this.state.carbohydrateCount}g`}</span>
+                        <p>Glucides</p>
+                    </div>
+                </ContainerKeyData>
+                <ContainerKeyData>
+                    <BackgroundIcon color = {colors.backgroundPink}>
+                        <img src = {Cheeseburger} alt = "Icône de cheeseburger"/>
+                    </BackgroundIcon>
+                    <div>
+                        <span>{`${this.state.lipidCount}g`}</span>
+                        <p>Lipides</p>
+                    </div>
+                </ContainerKeyData>
+            </ContainerRight>
+        )
+    }
 }
 
 export default KeyData

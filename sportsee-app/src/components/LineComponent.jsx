@@ -6,6 +6,11 @@ import styled from "styled-components"
 //Utils
 import colors from "../styles/colors"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const ContainerLine = styled.div`
   display: flex;
   position: relative;
@@ -63,13 +68,35 @@ const CustomTooltip = ({active, payload}) => {
 
 /**
 * @param {Object} props - Props
-* @param {Array} props - Data to display in the graph (average)
-* @param {string} props[].day - Date of the data
-* @param {number} props[].sessionLength - Duration of the session for the date
+* @param {string} id - User ID number
 * @returns {Component} - Div with the Line Chart
 */
 
 class LineComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      average: [
+        {day: 0, sessionLength: NaN},
+      ]
+    }
+    this.service = new Service()
+  }
+
+  componentDidMount() {
+    this.service.getAverageSessions(this.props.id, this.recoveryAverageSessions)
+  }
+  
+  /**
+  * Update the state with the fetched data
+  * @param {object} data the fetched data from API
+  */
+
+  recoveryAverageSessions = (data) => {
+    this.setState({
+      average: data.average
+    })
+  }
 
   /**
   * @param {Object} props - Corresponds to unformatted X axis data (number)
@@ -107,16 +134,13 @@ class LineComponent extends React.Component {
   }
 
   render() {
-
-    const {average} = this.props
-
     return (
       <ContainerLine>
         <h2>Durée moyenne des sessions</h2>
         <LineChart
           width = {258}
           height = {263}
-          data = {average}
+          data = {this.state.average}
           margin = {{
             top: 0,
             right: 14,

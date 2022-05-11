@@ -6,6 +6,11 @@ import styled from "styled-components"
 //Utilss
 import colors from "../styles/colors"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const ContainerTooltip = styled.div`
     background-color: ${colors.graphRed};
     color: ${colors.white};
@@ -111,88 +116,107 @@ const formatXAxis = (tickItem) => {
 
 /**
 * @param {Object} props - Props
-* @param {Array} props.activity - Data to display in the graph (sessions)
-* @param {string} props.activity[].day - Date of the data
-* @param {number} props.activity[].kilogram - Kilogram for the date
-* @param {number} props.activity[].calories - Calories spent for the day
+* @param {string} id - User ID number
 * @returns {Component} - Div with the Biaxal Bar Chart
 */
 
 class BiaxialBarComponent extends React.Component {
-  render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            sessions: [
+                {day: "", kilogram: NaN, calories: NaN}
+            ]
+        }
+        this.service = new Service()
+    }
 
-    const {sessions} = this.props.activity
+    componentDidMount() {
+        this.service.getActivity(this.props.id, this.recoveryActivity)
+    }
+    
+    /**
+    * Update the state with the fetched data
+    * @param {object} data the fetched data from API
+    */
 
-    return (
-        <ContainerBar>
-            <Title>
-                <h2>Activité quotidienne</h2>
-                <Legend>
-                    <Unity>
-                        <Color color = {colors.darkGrey}/>
-                        <p>Poids (kg)</p>
-                    </Unity>
-                    <Unity>
-                        <Color color = {colors.graphRed}/>
-                        <p>Poids Calories brûlées (kCal)</p>
-                    </Unity>
-                </Legend>
-            </Title>
-            <BarChart
-                width = {785}
-                height = {206}
-                data = {sessions}
-            >
-                <CartesianGrid
-                    vertical = {false}
-                    strokeDasharray = "4 2"
-                />
-                <XAxis 
-                    dataKey = "day"
-                    tickLine = {false}
-                    dy = {16}
-                    axisLine = {{stroke: colors.graphLine}}
-                    tickFormatter = {formatXAxis}
-                />
-                <YAxis
-                    axisLine = {false}
-                    tickLine = {false}
-                    dx = {28}
-                    yAxisId = "kilogram"
-                    orientation = "right"
-                    dataKey = "kilogram"
-                    color = {colors.graphGrey}
-                    domain = {["dataMin -1", "dataMax +1"]}
-                    tick = {{fontSize: 14}}
-                />
-                <YAxis
-                    yAxisId = "calories"
-                    dataKey = "calories"
-                    hide = {true}
-                    domain = {[0, "dataMax +10"]}
-                />
-                <Tooltip
-                    cursor = {{fill: colors.backgroundGraphGrey}}
-                    content = {<CustomTooltip />}
-                />
-                <Bar
-                    barSize = {7}
-                    radius = {[3, 3, 0, 0]}
-                    yAxisId = "kilogram"
-                    dataKey = "kilogram"
-                    fill = {colors.darkGrey}
-                />
-                <Bar
-                    yAxisId = "calories"
-                    barSize = {7}
-                    radius = {[3, 3, 0, 0]}
-                    dataKey = "calories"
-                    fill = {colors.graphRed}
-                />
-            </BarChart>
-        </ContainerBar>
-    )
-  }
+    recoveryActivity = (data) => {
+        this.setState({
+            sessions: data.sessions
+        })
+    }
+
+    render() {
+        return (
+            <ContainerBar>
+                <Title>
+                    <h2>Activité quotidienne</h2>
+                    <Legend>
+                        <Unity>
+                            <Color color = {colors.darkGrey}/>
+                            <p>Poids (kg)</p>
+                        </Unity>
+                        <Unity>
+                            <Color color = {colors.graphRed}/>
+                            <p>Poids Calories brûlées (kCal)</p>
+                        </Unity>
+                    </Legend>
+                </Title>
+                <BarChart
+                    width = {785}
+                    height = {206}
+                    data = {this.state.sessions}
+                >
+                    <CartesianGrid
+                        vertical = {false}
+                        strokeDasharray = "4 2"
+                    />
+                    <XAxis 
+                        dataKey = "day"
+                        tickLine = {false}
+                        dy = {16}
+                        axisLine = {{stroke: colors.graphLine}}
+                        tickFormatter = {formatXAxis}
+                    />
+                    <YAxis
+                        axisLine = {false}
+                        tickLine = {false}
+                        dx = {28}
+                        yAxisId = "kilogram"
+                        orientation = "right"
+                        dataKey = "kilogram"
+                        color = {colors.graphGrey}
+                        domain = {["dataMin -1", "dataMax +1"]}
+                        tick = {{fontSize: 14}}
+                    />
+                    <YAxis
+                        yAxisId = "calories"
+                        dataKey = "calories"
+                        hide = {true}
+                        domain = {[0, "dataMax +10"]}
+                    />
+                    <Tooltip
+                        cursor = {{fill: colors.backgroundGraphGrey}}
+                        content = {<CustomTooltip />}
+                    />
+                    <Bar
+                        barSize = {7}
+                        radius = {[3, 3, 0, 0]}
+                        yAxisId = "kilogram"
+                        dataKey = "kilogram"
+                        fill = {colors.darkGrey}
+                    />
+                    <Bar
+                        yAxisId = "calories"
+                        barSize = {7}
+                        radius = {[3, 3, 0, 0]}
+                        dataKey = "calories"
+                        fill = {colors.graphRed}
+                    />
+                </BarChart>
+            </ContainerBar>
+        )
+    }
 }
 
 export default BiaxialBarComponent

@@ -6,6 +6,11 @@ import styled from "styled-components"
 //Utils
 import colors from "../styles/colors"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const ContainerPie = styled.div`
   display: flex;
   position: relative;
@@ -45,17 +50,36 @@ const PieInfo = styled.div`
 
 /**
 * @param {Object} props - Props
-* @param {Array} props - Data to display in the graph (user)
-* @param {number} props.todayScore - Daily activity score
+* @param {string} id - User ID number
 * @returns {Component} - Div with the Pie Chart
 */
 
 class PieComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      todayScore: NaN
+    }
+    this.service = new Service()
+  }
+
+  componentDidMount() {
+    this.service.getUser(this.props.id, this.recoveryUser)
+  }
+  
+  /**
+  * Update the state with the fetched data
+  * @param {object} data the fetched data from API
+  */
+
+  recoveryUser = (data) => {
+    this.setState({
+      todayScore: data.todayScore
+    })
+  }
+
   render () {
-
-    const {user} = this.props
-
-    const score = [{ value: user.todayScore }, { value: 1 - user.todayScore }]
+    const score = [{ value: this.state.todayScore }, { value: 1 - this.state.todayScore }]
     const graphColors = [colors.graphRed, "transparent"]
 
     return (
@@ -81,7 +105,7 @@ class PieComponent extends React.Component {
           </Pie>
         </PieChart>
         <PieInfo>
-          <span>{`${user.todayScore * 100}%`}</span>
+          <span>{`${this.state.todayScore * 100}%`}</span>
           <p>de votre</p>
           <p>objectif</p>
         </PieInfo>

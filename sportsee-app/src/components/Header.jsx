@@ -5,6 +5,11 @@ import styled from "styled-components"
 //Utils
 import colors from "../styles/colors"
 
+//Datas
+import Service from "../datas/ServiceAPI"
+//Possibility to change service (mocked data)
+//import Service from "../datas/ServiceMock"
+
 const Title = styled.header`
     h1 {
         font-size: 4.8rem;
@@ -25,18 +30,38 @@ const Name = styled.span`
 
 /**
 * @param {Object} props - Props
-* @param {string} props - Firstname of the user (name)
+* @param {string} id - User ID number
 * @returns {Component} - Header with name of the user and tagline 
 */
 
 class Header extends React.Component {
-    render() { 
-        
-        const {name} = this.props
-        
+    constructor(props) {
+        super(props)
+        this.state = {
+          name: null
+        }
+        this.service = new Service()
+    }
+    
+    componentDidMount() {
+        this.service.getUser(this.props.id, this.recoveryUser)
+    }
+
+    /**
+    * Update the state with the fetched data
+    * @param {object} data the fetched data from API
+    */
+      
+    recoveryUser = (data) => {
+        this.setState({
+            name: data.name
+        })
+    }
+
+    render() {
         return (
             <Title>
-                <h1>Bonjour <Name>{name}</Name></h1>
+                <h1>Bonjour <Name>{this.state.name}</Name></h1>
                 <p>Félicitation ! Vous avez explosé vos objectif hier 👏</p>
             </Title>
         )
