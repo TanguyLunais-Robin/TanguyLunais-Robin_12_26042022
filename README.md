@@ -61,7 +61,7 @@ Build a user profile page in React, fetching data from a NodeJS external server.
 
 - Clone the project to your computer:
 
-`git clone https://github.com/TanguyLunais-Robin/TanguyLunais-Robin_12_26042022'
+`git clone https://github.com/TanguyLunais-Robin/TanguyLunais-Robin_12_26042022`
 
 - Open the project folder
 - Go to the app:
